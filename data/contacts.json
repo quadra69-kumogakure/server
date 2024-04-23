@@ -1,0 +1,22 @@
+[
+    {
+        "UserId" : 2,
+        "FriendId" : 1,
+        "alias" : ""
+    }, 
+    {
+        "UserId" : 1,
+        "FriendId" : 2,
+        "alias" : ""
+    }, 
+    {
+        "UserId" : 2,
+        "FriendId" : 3,
+        "alias" : ""
+    },
+    {
+        "UserId" : 3,
+        "FriendId" : 2,
+        "alias" : ""
+    }
+]

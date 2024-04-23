@@ -1,0 +1,37 @@
+[
+  {
+    "email": "tfidgett0@newyorker.com",
+    "password": "mudahsaja",
+    "firstName": "Timofei",
+    "lastName": "Fidgett",
+    "profilePicture": "http://dummyimage.com/147x100.png/dddddd/000000"
+  },
+  {
+    "email": "pstickler1@salon.com",
+    "password": "passwordsatu",
+    "firstName": "Pru",
+    "lastName": "Stickler",
+    "profilePicture": "http://dummyimage.com/182x100.png/cc0000/ffffff"
+  },
+  {
+    "email": "vkleinpeltz2@1und1.de",
+    "password": "kepodeh",
+    "firstName": "Valery",
+    "lastName": "Kleinpeltz",
+    "profilePicture": "http://dummyimage.com/188x100.png/cc0000/ffffff"
+  },
+  {
+    "email": "kcrouch3@ucoz.ru",
+    "password": "lS7|EW>Bw",
+    "firstName": "Kelsi",
+    "lastName": "Crouch",
+    "profilePicture": "http://dummyimage.com/176x100.png/dddddd/000000"
+  },
+  {
+    "email": "medelheid4@aol.com",
+    "password": "yA6+!B=Pqx\\K",
+    "firstName": "Moe",
+    "lastName": "Edelheid",
+    "profilePicture": "http://dummyimage.com/220x100.png/5fa2dd/ffffff"
+  }
+]
