@@ -4,29 +4,14 @@ if (process.env.NODE_ENV !== "production") {
 };
 
 const express = require("express");
-// const { createServer } = require("http");
-// const { Server } = require("socket.io");
-
-
-const app = express();
-// const httpServer = createServer(app);
-// const io = new Server(httpServer, { 
-//   cors : {
-//     origin : "http://localhost:5173/"
-//   }
-// });
-
-const port = 3000;
+const { createServer } = require("http");
+const { Server } = require("socket.io");
 const cors = require('cors');
 
+const app = express();
+const port = 3000;
 const routes = require('./routes/routes.js');
 const errorHandler = require('./middlewares/errorHandler.js')
-
-// io.on("connection", (socket) => {
-//   // ...
-//   console.log(socket);
-//   console.log("user connected")
-// });
 
 
 app.use(express.urlencoded({ extended: false }));
@@ -37,10 +22,33 @@ app.use("/", routes);
 
 app.use(errorHandler);
 
-// httpServer.listen(port, () => {
-//   console.log(`Example app listening on port ${port}`);
-// });
+const httpServer = createServer(app);
+const io = new Server(httpServer, { 
+  cors : {
+    origin : "*"
+  }
+});
 
-app.listen(port, () => {
+io.on("connection", (socket) => {
+  // ...
+  console.log(socket.id);
+  console.log("user connected");
+
+  
+
+  socket.on("join-conversation", (conversationId) => {
+    socket.join(`room-${conversationId}`)
+    console.log(`user id ${socket.id} masuk ke room ${conversationId}`);
+  });
+
+  socket.on("sent-message", ({conversationId, message}) => {
+    io.to(`room-${conversationId}`).emit("sent-message", conversationId, message);
+    console.log(`message : ${message}, sent to room ${conversationId}`)
+  });
+});
+
+
+httpServer.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
+

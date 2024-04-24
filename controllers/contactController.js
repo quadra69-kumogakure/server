@@ -66,14 +66,9 @@ class contactController {
     static async displayPerContact(req, res, next) {
         try {
             const UserId = req.user.id;
-            const FriendId = req.params.id;
+            const ContactId = req.params.id;
 
-            const contact = await Contact.findOne({
-                where : {
-                    UserId,
-                    FriendId
-                }
-            });
+            const contact = await Contact.findByPk(ContactId);
 
             res.status(200).json({
                 contact
