@@ -34,24 +34,18 @@ io.on("connection", (socket) => {
   console.log(socket.id);
   console.log("user connected");
 
-  socket.user = {
-    email : "Anonymous",
-    id : socket.id
-  };
-
-  socket.on("set-user", (userData) => {
-    socket.user = userData;
-    console.log(socket.user);
-  })
+  
 
   socket.on("join-conversation", (conversationId) => {
     socket.join(`room-${conversationId}`)
     console.log(`user id ${socket.id} masuk ke room ${conversationId}`);
   });
 
-  socket.on("sent-message", (conversationId, message) => {
-    io.to(`room-${conversationId}`).emit("sent-message", message);
+  socket.on("sent-message", ({conversationId, message}) => {
+    io.to(`room-${conversationId}`).emit("sent-message", conversationId, message);
     console.log(`message : ${message}, sent to room ${conversationId}`)
+
+    
   })
 });
 
