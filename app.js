@@ -44,9 +44,7 @@ io.on("connection", (socket) => {
   socket.on("sent-message", ({conversationId, message}) => {
     io.to(`room-${conversationId}`).emit("sent-message", conversationId, message);
     console.log(`message : ${message}, sent to room ${conversationId}`)
-
-    
-  })
+  });
 });
 
 
