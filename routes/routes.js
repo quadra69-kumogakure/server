@@ -7,6 +7,7 @@ const contactController = require('../controllers/contactController');
 const messageController = require('../controllers/messageController');
 const conversationController = require('../controllers/conversationController');
 const stickerController = require('../controllers/stickerController');
+const paymentController = require('../controllers/paymentController');
 const authentication = require('../middlewares/authentication');
 
 router.get("/", (req, res) => {
@@ -48,5 +49,7 @@ router.put("/contacts/:id", contactController.changeAlias);
 router.delete("/contacts/:id", contactController.deleteContact);
 
 router.get("/stickers", stickerController.getStickers);
+
+router.post("/generate-midtrans-token", paymentController.generateToken);
 
 module.exports = router;

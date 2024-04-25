@@ -1,4 +1,7 @@
 "use strict";
+if (process.env.NODE_ENV !== "production") {
+  require('dotenv').config();
+};
 const axios = require("axios");
 
 /** @type {import('sequelize-cli').Migration} */
@@ -17,7 +20,7 @@ module.exports = {
       method: "GET",
       url: "https://messenger.stipop.io/v1/search",
       headers: {
-        apikey: "c249b161249f7b8802d55eddc2d7e566",
+        apikey: process.env.STIPOP_API_KEY,
       },
       params: {
         userId: "9937",
