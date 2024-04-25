@@ -6,6 +6,7 @@ const userController = require('../controllers/userController');
 const contactController = require('../controllers/contactController');
 const messageController = require('../controllers/messageController');
 const conversationController = require('../controllers/conversationController');
+const stickerController = require('../controllers/stickerController');
 const authentication = require('../middlewares/authentication');
 
 router.get("/", (req, res) => {
@@ -45,5 +46,7 @@ router.post("/conversations", conversationController.addConversation);
 router.put("/contacts/:id", contactController.changeAlias);
 
 router.delete("/contacts/:id", contactController.deleteContact);
+
+router.get("/stickers", stickerController.getStickers);
 
 module.exports = router;
