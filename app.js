@@ -48,7 +48,5 @@ io.on("connection", (socket) => {
 });
 
 
-httpServer.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
+module.exports = httpServer;
 
