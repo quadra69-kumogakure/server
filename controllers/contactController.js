@@ -11,7 +11,8 @@ class contactController {
                     UserId 
                 },
                 include : {
-                    model : User
+                    model : User,
+                    as: "friend"
                 }
             });
 
@@ -65,15 +66,12 @@ class contactController {
 
     static async displayPerContact(req, res, next) {
         try {
-            const UserId = req.user.id;
-            const FriendId = req.params.id;
+            const ContactId = req.params.id;
 
-            const contact = await Contact.findOne({
-                where : {
-                    UserId,
-                    FriendId
-                }
-            });
+            const contact = await Contact.findByPk(ContactId, {include: [{
+                model: User,
+                as : "friend"
+            }]});
 
             res.status(200).json({
                 contact
@@ -110,6 +108,26 @@ class contactController {
             next(error);
         }
     }
+
+    static async deleteContact(req, res, next) {
+        try {
+            const ContactId = req.params.id;
+            const contact = await Contact.findByPk(ContactId);
+    
+            if (!contact) {
+                throw { name: "Not Found" };
+            }
+    
+            await contact.destroy();
+    
+            res.status(200).json({
+                message: "Contact deleted successfully",
+            });
+        } catch (error) {
+            next(error);
+        }
+    }
+    
 };
 
 module.exports = contactController;
