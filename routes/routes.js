@@ -42,5 +42,8 @@ router.get("/conversations/:id", conversationController.displayPerConversation);
 
 router.post("/conversations", conversationController.addConversation);
 
+router.put("/contacts/:id", contactController.changeAlias);
+
+router.delete("/contacts/:id", contactController.deleteContact);
 
 module.exports = router;
