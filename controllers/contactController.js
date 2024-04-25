@@ -127,6 +127,34 @@ class contactController {
             next(error);
         }
     }
+
+    static async changeAlias(req, res, next) {
+        try {
+            const UserId = req.user.id;
+            const FriendId = req.params.id;
+            const { alias } = req.body;
+
+            const contact = await Contact.findOne({
+                where: {
+                    UserId,
+                    FriendId
+                }
+            });
+
+            if (!contact) {
+                throw { name: "Not Found" };
+            }
+
+            const updatedContact = await contact.update({ alias });
+
+            res.status(200).json({
+                message: "Alias updated",
+                friend: updatedContact
+            });
+        } catch (error) {
+            next(error);
+        }
+    }
     
 };
 
