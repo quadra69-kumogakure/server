@@ -50,6 +50,8 @@ router.delete("/contacts/:id", contactController.deleteContact);
 
 router.get("/stickers", stickerController.getStickers);
 
+router.get("/stickers/:id", stickerController.getPerSticker);
+
 router.post("/generate-midtrans-token", paymentController.generateToken);
 
 module.exports = router;
